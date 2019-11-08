@@ -1,22 +1,46 @@
-.App {
+.app {
   text-align: center;
+  
 }
 
-.App-logo {
-  height: 40vmin;
+.city {
+  font-size: 36px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.temperature {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #09d3ac;
+.temperature .temperature--current {
+  font-size: 72px;
+}
+
+.temperature .temperature--min {
+  
+}
+
+.temperature .temperature--max {
+  
+}
+
+.wind {
+
+}
+
+.description {
+
+}
+
+.sun {
+
+}
+
+.sun .sun--sunrise {
+
+}
+
+.sun .sun--sunset {
+
 }
