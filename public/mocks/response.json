@@ -1,0 +1,1357 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 40,
+  "list": [
+    {
+      "dt": 1573257600,
+      "main": {
+        "temp": -1.88,
+        "temp_min": -2.36,
+        "temp_max": -1.88,
+        "pressure": 1013,
+        "sea_level": 1013,
+        "grnd_level": 999,
+        "humidity": 84,
+        "temp_kf": 0.49
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 85
+      },
+      "wind": {
+        "speed": 4.04,
+        "deg": 357
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-09 00:00:00"
+    },
+    {
+      "dt": 1573268400,
+      "main": {
+        "temp": -2.02,
+        "temp_min": -2.39,
+        "temp_max": -2.02,
+        "pressure": 1012,
+        "sea_level": 1012,
+        "grnd_level": 998,
+        "humidity": 83,
+        "temp_kf": 0.37
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 95
+      },
+      "wind": {
+        "speed": 3.74,
+        "deg": 3
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-09 03:00:00"
+    },
+    {
+      "dt": 1573279200,
+      "main": {
+        "temp": -1.76,
+        "temp_min": -2,
+        "temp_max": -1.76,
+        "pressure": 1012,
+        "sea_level": 1012,
+        "grnd_level": 998,
+        "humidity": 82,
+        "temp_kf": 0.24
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 87
+      },
+      "wind": {
+        "speed": 4.02,
+        "deg": 2
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-09 06:00:00"
+    },
+    {
+      "dt": 1573290000,
+      "main": {
+        "temp": -0.91,
+        "temp_min": -1.03,
+        "temp_max": -0.91,
+        "pressure": 1012,
+        "sea_level": 1012,
+        "grnd_level": 998,
+        "humidity": 79,
+        "temp_kf": 0.12
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.12,
+        "deg": 5
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-09 09:00:00"
+    },
+    {
+      "dt": 1573300800,
+      "main": {
+        "temp": -0.13,
+        "temp_min": -0.13,
+        "temp_max": -0.13,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 998,
+        "humidity": 76,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.01,
+        "deg": 9
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-09 12:00:00"
+    },
+    {
+      "dt": 1573311600,
+      "main": {
+        "temp": -0.75,
+        "temp_min": -0.75,
+        "temp_max": -0.75,
+        "pressure": 1011,
+        "sea_level": 1011,
+        "grnd_level": 997,
+        "humidity": 80,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 87
+      },
+      "wind": {
+        "speed": 3.94,
+        "deg": 8
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-09 15:00:00"
+    },
+    {
+      "dt": 1573322400,
+      "main": {
+        "temp": -0.74,
+        "temp_min": -0.74,
+        "temp_max": -0.74,
+        "pressure": 1012,
+        "sea_level": 1012,
+        "grnd_level": 998,
+        "humidity": 83,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 94
+      },
+      "wind": {
+        "speed": 3.88,
+        "deg": 13
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-09 18:00:00"
+    },
+    {
+      "dt": 1573333200,
+      "main": {
+        "temp": -1.5,
+        "temp_min": -1.5,
+        "temp_max": -1.5,
+        "pressure": 1013,
+        "sea_level": 1013,
+        "grnd_level": 999,
+        "humidity": 90,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.14,
+        "deg": 15
+      },
+      "snow": {
+        "3h": 0.13
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-09 21:00:00"
+    },
+    {
+      "dt": 1573344000,
+      "main": {
+        "temp": -2.38,
+        "temp_min": -2.38,
+        "temp_max": -2.38,
+        "pressure": 1014,
+        "sea_level": 1014,
+        "grnd_level": 1000,
+        "humidity": 87,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.2,
+        "deg": 15
+      },
+      "snow": {
+        "3h": 0.25
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-10 00:00:00"
+    },
+    {
+      "dt": 1573354800,
+      "main": {
+        "temp": -2.95,
+        "temp_min": -2.95,
+        "temp_max": -2.95,
+        "pressure": 1014,
+        "sea_level": 1014,
+        "grnd_level": 1000,
+        "humidity": 83,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.7,
+        "deg": 14
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-10 03:00:00"
+    },
+    {
+      "dt": 1573365600,
+      "main": {
+        "temp": -3.19,
+        "temp_min": -3.19,
+        "temp_max": -3.19,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 1001,
+        "humidity": 82,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 99
+      },
+      "wind": {
+        "speed": 3.24,
+        "deg": 17
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-10 06:00:00"
+    },
+    {
+      "dt": 1573376400,
+      "main": {
+        "temp": -2.92,
+        "temp_min": -2.92,
+        "temp_max": -2.92,
+        "pressure": 1016,
+        "sea_level": 1016,
+        "grnd_level": 1002,
+        "humidity": 76,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "spredt skydekke",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 75
+      },
+      "wind": {
+        "speed": 3.03,
+        "deg": 20
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-10 09:00:00"
+    },
+    {
+      "dt": 1573387200,
+      "main": {
+        "temp": -1.83,
+        "temp_min": -1.83,
+        "temp_max": -1.83,
+        "pressure": 1016,
+        "sea_level": 1016,
+        "grnd_level": 1002,
+        "humidity": 72,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "spredt skydekke",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 81
+      },
+      "wind": {
+        "speed": 2.73,
+        "deg": 25
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-10 12:00:00"
+    },
+    {
+      "dt": 1573398000,
+      "main": {
+        "temp": -3.01,
+        "temp_min": -3.01,
+        "temp_max": -3.01,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 1001,
+        "humidity": 89,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.99,
+        "deg": 30
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-10 15:00:00"
+    },
+    {
+      "dt": 1573408800,
+      "main": {
+        "temp": -3.49,
+        "temp_min": -3.49,
+        "temp_max": -3.49,
+        "pressure": 1015,
+        "sea_level": 1015,
+        "grnd_level": 1001,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 93
+      },
+      "wind": {
+        "speed": 1.43,
+        "deg": 57
+      },
+      "snow": {
+        "3h": 0.25
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-10 18:00:00"
+    },
+    {
+      "dt": 1573419600,
+      "main": {
+        "temp": -3.99,
+        "temp_min": -3.99,
+        "temp_max": -3.99,
+        "pressure": 1014,
+        "sea_level": 1014,
+        "grnd_level": 1001,
+        "humidity": 91,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 99
+      },
+      "wind": {
+        "speed": 1.73,
+        "deg": 57
+      },
+      "snow": {
+        "3h": 0.31
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-10 21:00:00"
+    },
+    {
+      "dt": 1573430400,
+      "main": {
+        "temp": -4.36,
+        "temp_min": -4.36,
+        "temp_max": -4.36,
+        "pressure": 1013,
+        "sea_level": 1013,
+        "grnd_level": 999,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.21,
+        "deg": 54
+      },
+      "snow": {
+        "3h": 0.56
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-11 00:00:00"
+    },
+    {
+      "dt": 1573441200,
+      "main": {
+        "temp": -4.52,
+        "temp_min": -4.52,
+        "temp_max": -4.52,
+        "pressure": 1010,
+        "sea_level": 1010,
+        "grnd_level": 996,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.2,
+        "deg": 50
+      },
+      "snow": {
+        "3h": 1.56
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-11 03:00:00"
+    },
+    {
+      "dt": 1573452000,
+      "main": {
+        "temp": -4.35,
+        "temp_min": -4.35,
+        "temp_max": -4.35,
+        "pressure": 1008,
+        "sea_level": 1008,
+        "grnd_level": 994,
+        "humidity": 93,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.29,
+        "deg": 46
+      },
+      "snow": {
+        "3h": 1.69
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-11 06:00:00"
+    },
+    {
+      "dt": 1573462800,
+      "main": {
+        "temp": -3.63,
+        "temp_min": -3.63,
+        "temp_max": -3.63,
+        "pressure": 1006,
+        "sea_level": 1006,
+        "grnd_level": 991,
+        "humidity": 94,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "snø",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.96,
+        "deg": 25
+      },
+      "snow": {
+        "3h": 3
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-11 09:00:00"
+    },
+    {
+      "dt": 1573473600,
+      "main": {
+        "temp": -3.74,
+        "temp_min": -3.74,
+        "temp_max": -3.74,
+        "pressure": 1004,
+        "sea_level": 1004,
+        "grnd_level": 990,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 601,
+          "main": "Snow",
+          "description": "snø",
+          "icon": "13d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.81,
+        "deg": 359
+      },
+      "snow": {
+        "3h": 3.63
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-11 12:00:00"
+    },
+    {
+      "dt": 1573484400,
+      "main": {
+        "temp": -3.82,
+        "temp_min": -3.82,
+        "temp_max": -3.82,
+        "pressure": 1004,
+        "sea_level": 1004,
+        "grnd_level": 990,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.32,
+        "deg": 344
+      },
+      "snow": {
+        "3h": 0.19
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-11 15:00:00"
+    },
+    {
+      "dt": 1573495200,
+      "main": {
+        "temp": -5.21,
+        "temp_min": -5.21,
+        "temp_max": -5.21,
+        "pressure": 1004,
+        "sea_level": 1004,
+        "grnd_level": 990,
+        "humidity": 96,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.23,
+        "deg": 344
+      },
+      "snow": {
+        "3h": 0.06
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-11 18:00:00"
+    },
+    {
+      "dt": 1573506000,
+      "main": {
+        "temp": -5.01,
+        "temp_min": -5.01,
+        "temp_max": -5.01,
+        "pressure": 1004,
+        "sea_level": 1004,
+        "grnd_level": 990,
+        "humidity": 92,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 99
+      },
+      "wind": {
+        "speed": 2.48,
+        "deg": 30
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-11 21:00:00"
+    },
+    {
+      "dt": 1573516800,
+      "main": {
+        "temp": -3.41,
+        "temp_min": -3.41,
+        "temp_max": -3.41,
+        "pressure": 1003,
+        "sea_level": 1003,
+        "grnd_level": 989,
+        "humidity": 94,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 99
+      },
+      "wind": {
+        "speed": 3.44,
+        "deg": 30
+      },
+      "snow": {
+        "3h": 1.44
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-12 00:00:00"
+    },
+    {
+      "dt": 1573527600,
+      "main": {
+        "temp": 1.04,
+        "temp_min": 1.04,
+        "temp_max": 1.04,
+        "pressure": 1002,
+        "sea_level": 1002,
+        "grnd_level": 987,
+        "humidity": 96,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lett regn",
+          "icon": "10n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.97,
+        "deg": 79
+      },
+      "rain": {
+        "3h": 0.25
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-12 03:00:00"
+    },
+    {
+      "dt": 1573538400,
+      "main": {
+        "temp": 2.01,
+        "temp_min": 2.01,
+        "temp_max": 2.01,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 986,
+        "humidity": 98,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lett regn",
+          "icon": "10n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 4.3,
+        "deg": 123
+      },
+      "rain": {
+        "3h": 1.31
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-12 06:00:00"
+    },
+    {
+      "dt": 1573549200,
+      "main": {
+        "temp": 2.78,
+        "temp_min": 2.78,
+        "temp_max": 2.78,
+        "pressure": 998,
+        "sea_level": 998,
+        "grnd_level": 984,
+        "humidity": 97,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lett regn",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 3.55,
+        "deg": 104
+      },
+      "rain": {
+        "3h": 1.44
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-12 09:00:00"
+    },
+    {
+      "dt": 1573560000,
+      "main": {
+        "temp": 2.15,
+        "temp_min": 2.15,
+        "temp_max": 2.15,
+        "pressure": 996,
+        "sea_level": 996,
+        "grnd_level": 983,
+        "humidity": 99,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 501,
+          "main": "Rain",
+          "description": "moderat regn",
+          "icon": "10d"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 2.75,
+        "deg": 80
+      },
+      "rain": {
+        "3h": 3.37
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-12 12:00:00"
+    },
+    {
+      "dt": 1573570800,
+      "main": {
+        "temp": 1.94,
+        "temp_min": 1.94,
+        "temp_max": 1.94,
+        "pressure": 996,
+        "sea_level": 996,
+        "grnd_level": 982,
+        "humidity": 99,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lett regn",
+          "icon": "10n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.64,
+        "deg": 63
+      },
+      "rain": {
+        "3h": 2.31
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-12 15:00:00"
+    },
+    {
+      "dt": 1573581600,
+      "main": {
+        "temp": 1.24,
+        "temp_min": 1.24,
+        "temp_max": 1.24,
+        "pressure": 997,
+        "sea_level": 997,
+        "grnd_level": 983,
+        "humidity": 99,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lett regn",
+          "icon": "10n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.01,
+        "deg": 288
+      },
+      "rain": {
+        "3h": 1.13
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-12 18:00:00"
+    },
+    {
+      "dt": 1573592400,
+      "main": {
+        "temp": 0.33,
+        "temp_min": 0.33,
+        "temp_max": 0.33,
+        "pressure": 999,
+        "sea_level": 999,
+        "grnd_level": 986,
+        "humidity": 98,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "lett snø",
+          "icon": "13n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 1.78,
+        "deg": 207
+      },
+      "snow": {
+        "3h": 0.38
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-12 21:00:00"
+    },
+    {
+      "dt": 1573603200,
+      "main": {
+        "temp": -0.43,
+        "temp_min": -0.43,
+        "temp_max": -0.43,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 987,
+        "humidity": 98,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 0.11,
+        "deg": 215
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-13 00:00:00"
+    },
+    {
+      "dt": 1573614000,
+      "main": {
+        "temp": 0.68,
+        "temp_min": 0.68,
+        "temp_max": 0.68,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 986,
+        "humidity": 98,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 100
+      },
+      "wind": {
+        "speed": 0.64,
+        "deg": 69
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-13 03:00:00"
+    },
+    {
+      "dt": 1573624800,
+      "main": {
+        "temp": 0.67,
+        "temp_min": 0.67,
+        "temp_max": 0.67,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 986,
+        "humidity": 97,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 97
+      },
+      "wind": {
+        "speed": 0.62,
+        "deg": 65
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-13 06:00:00"
+    },
+    {
+      "dt": 1573635600,
+      "main": {
+        "temp": 1.47,
+        "temp_min": 1.47,
+        "temp_max": 1.47,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 987,
+        "humidity": 98,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 97
+      },
+      "wind": {
+        "speed": 0.57,
+        "deg": 132
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-13 09:00:00"
+    },
+    {
+      "dt": 1573646400,
+      "main": {
+        "temp": 2.32,
+        "temp_min": 2.32,
+        "temp_max": 2.32,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 987,
+        "humidity": 99,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04d"
+        }
+      ],
+      "clouds": {
+        "all": 97
+      },
+      "wind": {
+        "speed": 0.25,
+        "deg": 351
+      },
+      "sys": {
+        "pod": "d"
+      },
+      "dt_txt": "2019-11-13 12:00:00"
+    },
+    {
+      "dt": 1573657200,
+      "main": {
+        "temp": 1.29,
+        "temp_min": 1.29,
+        "temp_max": 1.29,
+        "pressure": 1000,
+        "sea_level": 1000,
+        "grnd_level": 987,
+        "humidity": 97,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 99
+      },
+      "wind": {
+        "speed": 0.94,
+        "deg": 85
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-13 15:00:00"
+    },
+    {
+      "dt": 1573668000,
+      "main": {
+        "temp": 1.16,
+        "temp_min": 1.16,
+        "temp_max": 1.16,
+        "pressure": 1002,
+        "sea_level": 1002,
+        "grnd_level": 989,
+        "humidity": 96,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 98
+      },
+      "wind": {
+        "speed": 0.5,
+        "deg": 138
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-13 18:00:00"
+    },
+    {
+      "dt": 1573678800,
+      "main": {
+        "temp": 1.26,
+        "temp_min": 1.26,
+        "temp_max": 1.26,
+        "pressure": 1003,
+        "sea_level": 1003,
+        "grnd_level": 990,
+        "humidity": 95,
+        "temp_kf": 0
+      },
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overskyet",
+          "icon": "04n"
+        }
+      ],
+      "clouds": {
+        "all": 95
+      },
+      "wind": {
+        "speed": 0.82,
+        "deg": 75
+      },
+      "sys": {
+        "pod": "n"
+      },
+      "dt_txt": "2019-11-13 21:00:00"
+    }
+  ],
+  "city": {
+    "id": 3139081,
+    "name": "Ski",
+    "coord": {
+      "lat": 59.7198,
+      "lon": 10.8382
+    },
+    "country": "NO",
+    "population": 12513,
+    "timezone": 3600,
+    "sunrise": 1573196053,
+    "sunset": 1573225593
+  }
+}

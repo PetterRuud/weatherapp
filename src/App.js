@@ -1,22 +1,52 @@
 import React, {useState, useEffect} from 'react';
+import { ReactComponent as Sun } from './Images/sun.svg';
+import { ReactComponent as Rain } from './Images/rain.svg';
+import { ReactComponent as Snow } from './Images/snow.svg';
+import { ReactComponent as SunCloud } from './Images/suncloud.svg';
+import { ReactComponent as Thunder } from './Images/thunder.svg';
+import { ReactComponent as Windy } from './Images/windy.svg';
+
 import './App.css';
 
 const getReadableTime = (timestamp) => {
   return new Date(timestamp * 1000).toLocaleTimeString();
 }
 
-const getDescription = (types) => {
-  if (!types) return;
-  return types.map(type => type.description);
+const getReadableTemperature = (temperature) => {
+  return parseInt(temperature);
 }
 
-const getTimeOfDay = () => {
-  const timeOfDay = new Date();
+const getDescription = (types) => {
+  if (!types) return;
+  return types.map(type => `Det er ${type.description} for faen`);
+}
+
+const getWeatherIcon = (types) => {
+  if (!types) return;
+  return types.map(type => {
+    switch(type.id) {
+      case 804:
+        return <Windy />
+      case 801:
+        return <SunCloud />
+      case 802:
+        return <Thunder />
+      case 600:
+        return <Snow />
+      case 'Rain':
+        return <Rain />
+      case 800:
+          return <Sun />
+      default:
+        return <Sun />;
+    }
+  });
 }
 
 const App = () => {
 
   const [isLoading, setLoading] = useState(false);
+  const [isShowMore, setShowMore] = useState(false);
   const [weather, setWeather] = useState({})
 
   useEffect(() => {
@@ -30,7 +60,6 @@ const App = () => {
     }
 
     getWeather();
-
   }, [])
 
 
@@ -40,30 +69,25 @@ const App = () => {
   }
 
   console.log(weather);
-  const { name, main = {}, wind = {}, weather: types = [], sys = {}} = weather;
+  const { name, main = {}, wind = {}, weather: types, sys = {}} = weather;
   return (
     <div className="app">
       <main>
         <h1 className="city">{name}</h1>
+        {getWeatherIcon(types)}
         <div className="temperature">
-          <h2 className="temperature--current">{main.temp}<span>º</span></h2>
-          <div>
-            <div className="temperature--max">
-              {main.temp_max}<span>º</span>
-            </div>
-            <div className="temperature--min">
-              {main.temp_min}<span>º</span>
-            </div>
-          </div>
+          <h2 className="temperature--current">{getReadableTemperature(main.temp)}<span>º</span></h2>
         </div>
         <div className="description">{getDescription(types)}</div>
-       
-        <div className="wind">{wind.speed}m/s</div>
-       
-        <div className="sun">
-          <div className="sun--sunrise">{getReadableTime(sys.sunrise)}</div>
-          <div className="sun--sunset">{getReadableTime(sys.sunset)}</div>
-        </div>
+        {isShowMore && (
+          <div className="moreinfo">
+            <div className="wind">{wind.speed}m/s</div>
+            <div className="sun">
+              <div className="sun--sunrise">{getReadableTime(sys.sunrise)}</div>
+              <div className="sun--sunset">{getReadableTime(sys.sunset)}</div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
