@@ -18,13 +18,20 @@ const getReadableTemperature = (temperature) => {
 
 const getDescription = (types) => {
   if (!types) return;
-  return types.map(type => `Det er ${type.description} for faen`);
+  return types.map(type => <p>{`Det er ${type.description} for faen`}</p>);
 }
 
 const getWeatherIcon = (types) => {
   if (!types) return;
   return types.map(type => {
     switch(type.id) {
+      // 701 misty
+      // 600 snow
+      // 804 windy
+      // 800 sun
+
+      case 701:
+        return <Windy />;
       case 804:
         return <Windy />
       case 801:
