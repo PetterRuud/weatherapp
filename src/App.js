@@ -81,7 +81,7 @@ const App = () => {
     <div className="app">
       <main>
         <h1 className="city">{name}</h1>
-        {getWeatherIcon(types)}
+        <div className="typeofweather">{getWeatherIcon(types)}</div>
         <div className="temperature">
           <h2 className="temperature--current">{getReadableTemperature(main.temp)}<span>º</span></h2>
         </div>
