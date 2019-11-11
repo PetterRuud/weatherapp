@@ -1,10 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { ReactComponent as Sun } from './Images/sun.svg';
-import { ReactComponent as Rain } from './Images/rain.svg';
-import { ReactComponent as Snow } from './Images/snow.svg';
-import { ReactComponent as SunCloud } from './Images/suncloud.svg';
-import { ReactComponent as Thunder } from './Images/thunder.svg';
-import { ReactComponent as Windy } from './Images/windy.svg';
 
 import './App.css';
 
@@ -18,55 +12,41 @@ const getReadableTemperature = (temperature) => {
 
 const getDescription = (types) => {
   if (!types) return;
-  return types.map(type => <p>{`Det er ${type.description} for faen`}</p>);
+  return types.map(type => <p key={type.id}>{`Det er ${type.description} for faen`}</p>);
 }
 
-const getWeatherIcon = (types) => {
+const getWeatherBackground = async (types) => {
   if (!types) return;
-  return types.map(type => {
-    switch(type.id) {
-      // 701 misty
-      // 600 snow
-      // 804 windy
-      // 800 sun
+  try {
+    const result = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=lOnl9COesAHugPQx9H4Cyd9trChVS0uY&q=${types[0].description}&limit=1&offset=0&rating=R&lang=no`);
+    
+    const {data} = await result.json();
+    console.log(data);
+    return `${data[0].embed_url}`;
+  } catch(error) {
+    throw new Error('bais');
+  }
 
-      case 701:
-        return <Windy />;
-      case 804:
-        return <Windy />
-      case 801:
-        return <SunCloud />
-      case 802:
-        return <Thunder />
-      case 600:
-        return <Snow />
-      case 'Rain':
-        return <Rain />
-      case 800:
-          return <Sun />
-      default:
-        return <Sun />;
-    }
-  });
 }
 
 const App = () => {
 
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [isShowMore, setShowMore] = useState(false);
   const [weather, setWeather] = useState({})
 
   useEffect(() => {
 
     async function getWeather() {
-      setLoading(true);
       const result = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Ski,no&units=metric&APPID=a15b2ef6b4b55c75704515c09e184044&lang=no');
       const weather = await result.json();
       setWeather(weather);
       setLoading(false);
+      // setShowMore(false);
     }
 
     getWeather();
+
   }, [])
 
 
@@ -78,11 +58,11 @@ const App = () => {
   console.log(weather);
   const { name, main = {}, wind = {}, weather: types, sys = {}} = weather;
   return (
-    <div className="app">
+    <div className="app" styles={{backgroundImage: getWeatherBackground(types)}}>
       <main>
         <h1 className="city">{name}</h1>
-        <div className="typeofweather">{getWeatherIcon(types)}</div>
         <div className="temperature">
+          xxx{JSON.stringify(getWeatherBackground(types))}xxx
           <h2 className="temperature--current">{getReadableTemperature(main.temp)}<span>º</span></h2>
         </div>
         <div className="description">{getDescription(types)}</div>
