@@ -55,7 +55,6 @@ const App = () => {
     return <div>Laster</div>
   }
 
-  console.log(weather);
   const { name, main = {}, wind = {}, weather: types, sys = {}} = weather;
   return (
     <div className="app" styles={{backgroundImage: getWeatherBackground(types)}}>
