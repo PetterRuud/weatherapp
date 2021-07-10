@@ -62,7 +62,6 @@ const App = () => {
       <main>
         <h1 className="city">{name}</h1>
         <div className="temperature">
-          xxx{JSON.stringify(getWeatherBackground(types))}xxx
           <h2 className="temperature--current">{getReadableTemperature(main.temp)}<span>º</span></h2>
         </div>
         <div className="description">{getDescription(types)}</div>
