@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 import './App.css';
 
@@ -12,7 +12,7 @@ const getReadableTemperature = (temperature) => {
 
 const getDescription = (types) => {
   if (!types) return;
-  return types.map(type => <p key={type.id}>{`Det er ${type.description} for faen`}</p>);
+  return types.map(type => <p key={type.id} className="description">{`Det er ${type.description} for faen`}</p>);
 }
 
 const getWeatherBackground = async (types) => {
@@ -72,7 +72,7 @@ const App = () => {
         <div className="temperature">
           <h2 className="temperature--current">{getReadableTemperature(main.temp)}<span>º</span></h2>
         </div>
-        <div className="description">{getDescription(types)}</div>
+        {getDescription(types)}
         {isShowMore && (
           <div className="moreinfo">
             <div className="wind">{wind.speed}m/s</div>
