@@ -68,7 +68,7 @@ const App = () => {
         <source src={background} type="video/mp4" />
       </video>
       <div className="content">
-        <h1 className="city">{name}</h1>
+        <h1 className="city">Hvordan er været i {name}</h1>
         <div className="temperature">
           <h2 className="temperature--current">{getReadableTemperature(main.temp)}<span>º</span></h2>
         </div>
