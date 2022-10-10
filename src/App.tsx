@@ -2,20 +2,63 @@ import {useState, useEffect} from 'react';
 
 import './App.css';
 
-const getReadableTime = (timestamp) => {
+type WeatherType = {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
+
+
+interface ListType {
+  name:string;
+  main:{
+    temp: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    sea_level: number;
+    grnd_level: number;
+    humidity: number;
+    temp_kf: number;
+  }; 
+  wind: {
+    speed: number;
+    deg: number;
+  }; 
+  weather: WeatherType[]; 
+  sys: {
+    pod: string;
+  };
+  city: {
+    id: number;
+    name: string;
+    coord: {
+      lat: number;
+      lon: number;
+    },
+    country: string
+    population: number;
+    timezone: number;
+    sunrise: number;
+    sunset: number;
+  }
+}
+
+const getReadableTime = (timestamp: number) => {
   return new Date(timestamp * 1000).toLocaleTimeString();
 }
 
-const getReadableTemperature = (temperature) => {
-  return parseInt(temperature);
+const getReadableTemperature = (temperature: number) => {
+  return Math.floor(temperature);
 }
 
-const getDescription = (types) => {
+const getDescription = (types: WeatherType[]) => {
   if (!types) return;
   return types.map(type => <p key={type.id} className="description">{`Det er ${type.description} for faen`}</p>);
 }
 
-const getWeatherBackground = async (types) => {
+const getWeatherBackground = async (types: WeatherType[]) => {
   if (!types) return;
   try {
     const result = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=lOnl9COesAHugPQx9H4Cyd9trChVS0uY&q=${types[0].description}&limit=1&offset=0&rating=R&lang=no`);
@@ -33,8 +76,8 @@ const App = () => {
 
   const [isLoading, setLoading] = useState(true);
   const [isShowMore, setShowMore] = useState(false);
-  const [weather, setWeather] = useState({})
-  const [background, setBackground] = useState(null);
+  const [weather, setWeather] = useState<ListType | null>(null)
+  const [background, setBackground] = useState('');
 
   useEffect(() => {
 
@@ -55,16 +98,15 @@ const App = () => {
 
 
   
-  if (isLoading) {
+  if (isLoading || !weather) {
     return <div>Laster</div>
   }
 
-  const { name, main = {}, wind = {}, weather: types, sys = {}} = weather;
-  console.log(background);
+  const { name, main, wind, weather: types, city} = weather;
   return (
     <div className="app">
       <main>
-      <video className="video" autoplay mute>
+      <video className="video" autoPlay muted>
         <source src={background} type="video/mp4" />
       </video>
       <div className="content">
@@ -77,8 +119,8 @@ const App = () => {
           <div className="moreinfo">
             <div className="wind">{wind.speed}m/s</div>
             <div className="sun">
-              <div className="sun--sunrise">{getReadableTime(sys.sunrise)}</div>
-              <div className="sun--sunset">{getReadableTime(sys.sunset)}</div>
+              <div className="sun--sunrise">{getReadableTime(city.sunrise)}</div>
+              <div className="sun--sunset">{getReadableTime(city.sunset)}</div>
             </div>
           </div>
           
