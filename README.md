@@ -1,3 +1,7 @@
+TODO
+- Convert to typescript
+- convert to vite
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)!.
 
 ## Available Scripts
