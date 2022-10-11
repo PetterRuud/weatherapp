@@ -20,7 +20,7 @@ video {
 .content {
   position: relative;
   z-index: 2;
-  padding: 48px 24px;
+  padding: 36px 24px;
   background-color: white;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0,
@@ -66,21 +66,35 @@ video {
 }
 
 .description {
-  padding: 24px;
+  padding: 12px;
   font-size: 36px;
   margin: 0;
 }
 
+.moreinfo {
+  font-size: 16px;
+}
+
 .sun {
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.sun .sun--sunrise {
-
-}
-
+.sun .sun--sunrise,
 .sun .sun--sunset {
+  display: flex;
+  align-items: center;
+}
 
+.sun .sun--sunrise img {
+  margin-right: 12px;
+}
+
+
+.sun .sun--sunset img {
+  margin-right: 12px;
+  transform: rotate(180deg);
 }
 
 svg {
@@ -89,6 +103,7 @@ svg {
   margin: 24px;
   fill: currentColor;
 }
+
 
 
 /* Thunder Bolt Animation */
