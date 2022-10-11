@@ -29,6 +29,8 @@ interface ListType {
   weather: WeatherType[]; 
   sys: {
     pod: string;
+    sunrise: number;
+    sunset: number;
   };
   city: {
     id: number;
@@ -40,8 +42,7 @@ interface ListType {
     country: string
     population: number;
     timezone: number;
-    sunrise: number;
-    sunset: number;
+    
   }
 }
 
@@ -55,7 +56,7 @@ const getReadableTemperature = (temperature: number) => {
 
 const getDescription = (types: WeatherType[]) => {
   if (!types) return;
-  return types.map(type => <p key={type.id} className="description">{`Det er ${type.description} for faen`}</p>);
+  return types.map(type => <p key={type.id} className="description">{`Det er ${type.description} for faen!`}</p>);
 }
 
 const getWeatherBackground = async (types: WeatherType[]) => {
@@ -75,7 +76,7 @@ const getWeatherBackground = async (types: WeatherType[]) => {
 const App = () => {
 
   const [isLoading, setLoading] = useState(true);
-  const [isShowMore, setShowMore] = useState(false);
+  const [isShowMore, setShowMore] = useState(true);
   const [weather, setWeather] = useState<ListType | null>(null)
   const [background, setBackground] = useState('');
 
@@ -102,7 +103,7 @@ const App = () => {
     return <div>Laster</div>
   }
 
-  const { name, main, wind, weather: types, city} = weather;
+  const { name, main, wind, weather: types, sys} = weather;
   return (
     <div className="app">
       <main>
@@ -119,8 +120,8 @@ const App = () => {
           <div className="moreinfo">
             <div className="wind">{wind.speed}m/s</div>
             <div className="sun">
-              <div className="sun--sunrise">{getReadableTime(city.sunrise)}</div>
-              <div className="sun--sunset">{getReadableTime(city.sunset)}</div>
+              <div className="sun--sunrise"><img src="/sunup.svg" alt="soloppgang" />{getReadableTime(sys.sunrise)}</div>
+              <div className="sun--sunset"><img src="/sunup.svg" alt="solnedgang" />{getReadableTime(sys.sunset)}</div>
             </div>
           </div>
           
