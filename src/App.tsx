@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Krangelmeter } from "./components/Krangelmeter";
+import { LocationDialog, type Place } from "./components/LocationDialog";
 import { SourceCard } from "./components/SourceCard";
 import { WeatherIcon } from "./components/WeatherIcon";
 import { SOURCES, type Coords, type Reading, type SourceId } from "./sources";
@@ -47,8 +48,8 @@ function useWeather(coords: Coords) {
 }
 
 export default function App() {
-  const [place, setPlace] = useState<Coords & { name?: string }>(SKI);
-  const [locating, setLocating] = useState(false);
+  const [place, setPlace] = useState<Place>(SKI);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const results = useWeather(place);
 
   const readings = Object.values(results).flatMap((r) => (r?.status === "ok" ? [r.reading] : []));
@@ -57,51 +58,28 @@ export default function App() {
   const argues = readings.length > 1 && (verdict?.spread ?? 0) >= 0.5;
   const name = place.name ?? verdict?.place ?? "her";
 
-  const locate = () => {
-    if (!navigator.geolocation) return;
-    setLocating(true);
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        setLocating(false);
-        setPlace({ lat: coords.latitude, lon: coords.longitude });
-      },
-      () => setLocating(false),
-      { maximumAge: 10 * 60_000 },
-    );
-  };
-
-  const locationButton =
-    place === SKI ? (
-      <button
-        type="button"
-        onClick={locate}
-        disabled={locating}
-        className="flex min-h-11 items-center gap-1.5 rounded-full border-2 border-ink px-4 text-sm font-semibold hover:bg-ink hover:text-paper disabled:opacity-60"
+  const locationButton = (
+    <button
+      type="button"
+      onClick={() => setDialogOpen(true)}
+      className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border-2 border-ink px-4 text-sm font-semibold hover:bg-ink hover:text-paper"
+    >
+      <svg
+        className="size-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
       >
-        <svg
-          className="size-4"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
-          <circle cx="12" cy="9.5" r="2.5" />
-        </svg>
-        {locating ? "Leter…" : "Ikke i Ski?"}
-      </button>
-    ) : (
-      <button
-        type="button"
-        onClick={() => setPlace(SKI)}
-        className="flex min-h-11 items-center rounded-full border-2 border-ink px-4 text-sm font-semibold hover:bg-ink hover:text-paper"
-      >
-        Tilbake til Ski
-      </button>
-    );
+        <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+        <circle cx="12" cy="9.5" r="2.5" />
+      </svg>
+      {place === SKI ? "Ikke i Ski?" : "Bytt sted"}
+    </button>
+  );
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-xl flex-col overflow-x-hidden px-5 pt-5 pb-8">
@@ -109,6 +87,13 @@ export default function App() {
         <h1 className="text-sm font-extrabold tracking-widest uppercase">Været i {name}</h1>
         {locationButton}
       </header>
+
+      <LocationDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        onPick={setPlace}
+        home={place === SKI ? undefined : SKI}
+      />
 
       {!verdict && (
         <p className="font-display my-auto py-24 text-center text-3xl uppercase">
