@@ -2,7 +2,6 @@
 
 interface ImportMetaEnv {
   readonly VITE_OPENWEATHER_KEY?: string;
-  readonly VITE_GIPHY_KEY?: string;
 }
 
 interface ImportMeta {

@@ -71,15 +71,3 @@ export function argumentQuip(spread: number, sources: number): string {
   if (spread < 3) return "Det er uenighet i rekkene.";
   return "Meteorologene krangler for faen!";
 }
-
-/** Search terms for the Giphy background. */
-export const GIF_QUERY: Record<Condition, string> = {
-  clear: "sunshine",
-  partly: "sun clouds",
-  cloudy: "cloudy sky",
-  fog: "fog",
-  wind: "windy",
-  rain: "rain",
-  snow: "snow",
-  thunder: "thunderstorm",
-};

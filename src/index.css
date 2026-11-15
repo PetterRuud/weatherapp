@@ -1,21 +1,44 @@
 @import "tailwindcss";
 @import "./icons/icons.css";
 
+/* Poster colours: yellow paper, black ink. Dark mode flips them. */
+:root {
+  --paper: #ffe14d;
+  --ink: #111111;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #111111;
+    --ink: #ffe14d;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
 }
 
 @keyframes wobble {
   0%,
   100% {
-    transform: rotate(-2deg);
+    transform: rotate(4deg);
   }
   50% {
-    transform: rotate(2deg);
+    transform: rotate(10deg);
   }
 }
 
 @utility animate-wobble {
   animation: wobble 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wobble {
+    animation: none;
+  }
 }

@@ -3,7 +3,7 @@ import { Krangelmeter } from "./components/Krangelmeter";
 import { SourceCard } from "./components/SourceCard";
 import { WeatherIcon } from "./components/WeatherIcon";
 import { SOURCES, type Coords, type Reading, type SourceId } from "./sources";
-import { argumentQuip, getVerdict, GIF_QUERY, tempQuip, windQuip } from "./verdict";
+import { argumentQuip, getVerdict, tempQuip, windQuip } from "./verdict";
 
 const SKI: Coords & { name: string } = { lat: 59.7195, lon: 10.8358, name: "Ski" };
 
@@ -46,25 +46,6 @@ function useWeather(coords: Coords) {
   return results;
 }
 
-function useGif(query: string | undefined) {
-  const [gif, setGif] = useState<string>();
-  useEffect(() => {
-    const key = import.meta.env.VITE_GIPHY_KEY;
-    if (!query || !key) return;
-    const ctrl = new AbortController();
-    const offset = Math.floor(Math.random() * 10);
-    fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${encodeURIComponent(query)}&limit=1&offset=${offset}&rating=pg-13`,
-      { signal: ctrl.signal },
-    )
-      .then((r) => r.json())
-      .then(({ data }) => setGif(data?.[0]?.images?.looping?.mp4))
-      .catch(() => {});
-    return () => ctrl.abort();
-  }, [query]);
-  return gif;
-}
-
 export default function App() {
   const [place, setPlace] = useState<Coords & { name?: string }>(SKI);
   const [locating, setLocating] = useState(false);
@@ -73,7 +54,6 @@ export default function App() {
   const readings = Object.values(results).flatMap((r) => (r?.status === "ok" ? [r.reading] : []));
   const pending = Object.values(results).some((r) => r?.status === "loading");
   const verdict = readings.length ? getVerdict(readings) : undefined;
-  const gif = useGif(verdict && GIF_QUERY[verdict.condition]);
   const argues = readings.length > 1 && (verdict?.spread ?? 0) >= 0.5;
   const name = place.name ?? verdict?.place ?? "her";
 
@@ -90,137 +70,127 @@ export default function App() {
     );
   };
 
+  const locationButton =
+    place === SKI ? (
+      <button
+        type="button"
+        onClick={locate}
+        disabled={locating}
+        className="flex min-h-11 items-center gap-1.5 rounded-full border-2 border-ink px-4 text-sm font-semibold hover:bg-ink hover:text-paper disabled:opacity-60"
+      >
+        <svg
+          className="size-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+          <circle cx="12" cy="9.5" r="2.5" />
+        </svg>
+        {locating ? "Leter…" : "Ikke i Ski?"}
+      </button>
+    ) : (
+      <button
+        type="button"
+        onClick={() => setPlace(SKI)}
+        className="flex min-h-11 items-center rounded-full border-2 border-ink px-4 text-sm font-semibold hover:bg-ink hover:text-paper"
+      >
+        Tilbake til Ski
+      </button>
+    );
+
   return (
-    <div className="relative min-h-dvh overflow-hidden">
-      {gif && (
-        <video
-          key={gif}
-          className="fixed inset-0 size-full object-cover"
-          src={gif}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      )}
-      {!gif && (
-        <div className="fixed inset-0 bg-gradient-to-br from-sky-200 via-indigo-200 to-rose-200 dark:from-slate-900 dark:via-indigo-950 dark:to-rose-950" />
+    <main className="mx-auto flex min-h-dvh max-w-xl flex-col overflow-x-hidden px-5 pt-5 pb-8">
+      <header className="flex items-center justify-between gap-3">
+        <h1 className="text-sm font-extrabold tracking-widest uppercase">Været i {name}</h1>
+        {locationButton}
+      </header>
+
+      {!verdict && (
+        <p className="font-display my-auto py-24 text-center text-3xl uppercase">
+          {pending ? "Spør meteorologene…" : "Ingen vil si noe om været. Typisk."}
+        </p>
       )}
 
-      <main className="relative z-10 mx-auto flex min-h-dvh max-w-xl flex-col items-center justify-center gap-4 px-4 py-10">
-        <section className="w-full rounded-3xl bg-white p-8 text-center shadow-2xl dark:bg-neutral-900">
-          <h1 className="text-xl font-semibold sm:text-2xl">Hvordan er været i {name}?</h1>
-
-          {!verdict && (
-            <p className="py-16 text-lg text-neutral-500">
-              {pending ? "Spør meteorologene…" : "Ingen vil si noe om været. Typisk."}
+      {verdict && (
+        <>
+          <div className="mt-2 flex items-start gap-2">
+            <p className="font-display min-w-0 text-[clamp(6rem,40vw,11.5rem)] leading-[0.9] tracking-[-0.06em] tabular-nums">
+              {Math.round(verdict.temp)}°
             </p>
-          )}
+            <div className="mt-6 ml-auto flex size-24 shrink-0 animate-wobble items-center justify-center rounded-full bg-ink text-paper sm:size-30">
+              <WeatherIcon condition={verdict.condition} className="size-16 sm:size-20" />
+            </div>
+          </div>
 
-          {verdict && (
-            <>
-              <div className="flex items-center justify-center gap-2">
-                <WeatherIcon
-                  condition={verdict.condition}
-                  className="size-24 animate-wobble sm:size-28"
-                />
-                <p className="font-display text-[7rem] leading-none font-extrabold tabular-nums sm:text-[9rem]">
-                  {Math.round(verdict.temp)}
-                  <span className="font-normal">°</span>
+          <p className="font-display mt-3 text-[clamp(2.25rem,11vw,3.5rem)] leading-[0.95] tracking-tight text-balance uppercase">
+            Det er {verdict.description} for faen!
+          </p>
+          <p className="mt-2.5 text-lg font-semibold">{tempQuip(verdict.temp)}</p>
+
+          <dl className="mt-5 grid grid-cols-3 border-y-2 border-ink">
+            <div className="py-2.5">
+              <dt className="text-xs font-semibold">Vind</dt>
+              <dd className="text-lg font-extrabold tabular-nums">
+                {verdict.windSpeed.toFixed(1).replace(".", ",")} m/s
+              </dd>
+              <dd className="text-xs">{windQuip(verdict.windSpeed)}</dd>
+            </div>
+            <div className="border-l-2 border-ink py-2.5 pl-3">
+              <dt className="text-xs font-semibold">Sola opp</dt>
+              <dd className="text-lg font-extrabold tabular-nums">{time(verdict.sunrise)}</dd>
+            </div>
+            <div className="border-l-2 border-ink py-2.5 pl-3">
+              <dt className="text-xs font-semibold">Sola ned</dt>
+              <dd className="text-lg font-extrabold tabular-nums">{time(verdict.sunset)}</dd>
+            </div>
+          </dl>
+
+          {readings.length > 1 && (
+            <section className="mt-5 -rotate-[1.2deg] bg-ink p-4 text-paper">
+              <div className="flex items-baseline justify-between gap-2">
+                <h2 className="font-display text-xl uppercase">Krangelmeter</h2>
+                <p className="text-sm font-semibold tabular-nums">
+                  {verdict.spread.toFixed(1).replace(".", ",")}° uenighet
                 </p>
               </div>
-              <p className="font-display mt-2 text-3xl font-extrabold text-balance sm:text-4xl">
-                Det er {verdict.description} for faen!
-              </p>
-              <p className="mt-2 text-neutral-500">{tempQuip(verdict.temp)}</p>
-
-              <dl className="mt-6 grid grid-cols-3 gap-2 text-sm">
-                <div>
-                  <dt className="text-neutral-500">Vind</dt>
-                  <dd className="font-semibold tabular-nums">{verdict.windSpeed.toFixed(1)} m/s</dd>
-                  <dd className="text-xs text-neutral-500">{windQuip(verdict.windSpeed)}</dd>
-                </div>
-                <div>
-                  <dt className="text-neutral-500">Soloppgang</dt>
-                  <dd className="flex items-center justify-center gap-1 font-semibold tabular-nums">
-                    <img src="/sunup.svg" alt="" className="size-4 dark:invert" />
-                    {time(verdict.sunrise)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-neutral-500">Solnedgang</dt>
-                  <dd className="flex items-center justify-center gap-1 font-semibold tabular-nums">
-                    <img src="/sunup.svg" alt="" className="size-4 rotate-180 dark:invert" />
-                    {time(verdict.sunset)}
-                  </dd>
-                </div>
-              </dl>
-            </>
+              <Krangelmeter readings={readings} />
+              <p className="mt-2 font-extrabold">{argumentQuip(verdict.spread, readings.length)}</p>
+            </section>
           )}
-        </section>
+        </>
+      )}
 
-        {verdict && readings.length > 1 && (
-          <section className="w-full rounded-3xl bg-white/90 p-5 shadow-xl backdrop-blur dark:bg-neutral-900/85">
-            <div className="mb-3 flex items-baseline justify-between gap-2">
-              <h2 className="font-display text-lg font-extrabold">Krangelmeter</h2>
-              <p className="text-sm text-neutral-500 tabular-nums">
-                {verdict.spread.toFixed(1)}° uenighet
-              </p>
-            </div>
-            <Krangelmeter readings={readings} />
-            <p className="mt-2 text-center text-sm font-semibold">
-              {argumentQuip(verdict.spread, readings.length)}
-            </p>
-          </section>
-        )}
+      <ul className="mt-5">
+        {SOURCES.map((source) => {
+          const r = results[source.id] ?? { status: "loading" };
+          if (r.status !== "ok") return <SourceCard key={source.id} source={source} {...r} />;
+          const badge = !argues
+            ? undefined
+            : r.reading === verdict?.coldest
+              ? "pessimisten"
+              : r.reading === verdict?.warmest
+                ? "optimisten"
+                : undefined;
+          return (
+            <SourceCard
+              key={source.id}
+              source={source}
+              status="ok"
+              reading={r.reading}
+              badge={badge}
+            />
+          );
+        })}
+      </ul>
 
-        <div className="flex w-full gap-3">
-          {SOURCES.map((source) => {
-            const r = results[source.id] ?? { status: "loading" };
-            if (r.status !== "ok") return <SourceCard key={source.id} source={source} {...r} />;
-            const badge = !argues
-              ? undefined
-              : r.reading === verdict?.coldest
-                ? "pessimisten"
-                : r.reading === verdict?.warmest
-                  ? "optimisten"
-                  : undefined;
-            return (
-              <SourceCard
-                key={source.id}
-                source={source}
-                status="ok"
-                reading={r.reading}
-                badge={badge}
-              />
-            );
-          })}
-        </div>
-
-        <footer className="flex flex-col items-center gap-2 text-xs text-neutral-700 dark:text-neutral-300">
-          {place === SKI ? (
-            <button
-              type="button"
-              onClick={locate}
-              disabled={locating}
-              className="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold shadow hover:bg-white disabled:opacity-60 dark:bg-neutral-900/85"
-            >
-              {locating ? "Leter…" : "Jeg er ikke i Ski 📍"}
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setPlace(SKI)}
-              className="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold shadow hover:bg-white dark:bg-neutral-900/85"
-            >
-              Tilbake til Ski
-            </button>
-          )}
-          <p className="rounded-full bg-white/70 px-3 py-1 backdrop-blur dark:bg-neutral-900/70">
-            Data fra MET Norway (Yr), OpenWeather og Open-Meteo · GIF-er fra Giphy
-          </p>
-        </footer>
-      </main>
-    </div>
+      <footer className="mt-auto pt-8 text-xs opacity-70">
+        Data fra MET Norway (Yr), OpenWeather og Open-Meteo
+      </footer>
+    </main>
   );
 }

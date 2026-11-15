@@ -16,17 +16,17 @@ export function Krangelmeter({ readings }: { readings: Reading[] }) {
 
   return (
     <div className="w-full">
-      <div className="relative h-3 rounded-full bg-gradient-to-r from-sky-300 via-amber-200 to-rose-400">
+      <div className="relative mt-5 mb-2 h-2.5 bg-paper">
         {readings.map((r, i) => (
           <span
             key={r.source}
             title={`${SOURCES.find((s) => s.id === r.source)?.name}: ${r.temp.toFixed(1)}°`}
-            className={`absolute top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-md transition-[left] duration-700 ${DOT[r.source]}`}
+            className={`absolute top-1/2 size-6 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-ink transition-[left] duration-700 ${DOT[r.source]}`}
             style={{ left: `${pos(r.temp)}%`, zIndex: i + 1 }}
           />
         ))}
       </div>
-      <div className="mt-1 flex justify-between text-xs text-neutral-500 tabular-nums">
+      <div className="flex justify-between text-xs font-semibold tabular-nums opacity-70">
         <span>{min}°</span>
         <span>{max}°</span>
       </div>
