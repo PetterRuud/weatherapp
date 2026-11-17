@@ -10,6 +10,10 @@ The sources vote on the weather (a tie goes to the worst weather) and average th
 The Krangelmeter shows how much they disagree. The coldest source is labelled the pessimist,
 the warmest the optimist.
 
+The **Langtid** tab (`#langtid`) shows up to 16 days. Yr and three global models (ECMWF, GFS
+and ICON, all through Open-Meteo) vote on each day the same way, and each day's bar has a dot
+per forecaster so you can see where they start to disagree.
+
 ## Develop
 
 Uses [Vite+](https://viteplus.dev) and pnpm.

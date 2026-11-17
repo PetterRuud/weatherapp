@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Krangelmeter } from "./components/Krangelmeter";
 import { LocationDialog, type Place } from "./components/LocationDialog";
+import { LongTerm } from "./components/LongTerm";
+import { RestOfDay } from "./components/RestOfDay";
 import { SourceCard } from "./components/SourceCard";
 import { WeatherIcon } from "./components/WeatherIcon";
 import { SOURCES, type Coords, type Reading, type SourceId } from "./sources";
-import { argumentQuip, getVerdict, tempQuip, windQuip } from "./verdict";
+import { argumentQuip, getRestOfDay, getVerdict, tempQuip, windQuip } from "./verdict";
 
 const SKI: Coords & { name: string } = { lat: 59.7195, lon: 10.8358, name: "Ski" };
 
@@ -47,14 +49,35 @@ function useWeather(coords: Coords) {
   return results;
 }
 
+type View = "now" | "long";
+const viewFromHash = (): View => (location.hash === "#langtid" ? "long" : "now");
+
+/** The view lives in the URL hash so the back button works and #langtid can be linked to. */
+function useView() {
+  const [view, setView] = useState(viewFromHash);
+  useEffect(() => {
+    const onHash = () => setView(viewFromHash());
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+  return view;
+}
+
+const TABS: { view: View; label: string; href: string }[] = [
+  { view: "now", label: "Nå", href: "#" },
+  { view: "long", label: "Langtid", href: "#langtid" },
+];
+
 export default function App() {
   const [place, setPlace] = useState<Place>(SKI);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const view = useView();
   const results = useWeather(place);
 
   const readings = Object.values(results).flatMap((r) => (r?.status === "ok" ? [r.reading] : []));
   const pending = Object.values(results).some((r) => r?.status === "loading");
   const verdict = readings.length ? getVerdict(readings) : undefined;
+  const restOfDay = verdict ? getRestOfDay(readings, verdict.utcOffset) : [];
   const argues = readings.length > 1 && (verdict?.spread ?? 0) >= 0.5;
   const name = place.name ?? verdict?.place ?? "her";
 
@@ -88,6 +111,21 @@ export default function App() {
         {locationButton}
       </header>
 
+      <nav className="mt-4 grid grid-cols-2 rounded-full border-2 border-ink p-1 text-sm font-extrabold uppercase">
+        {TABS.map((tab) => (
+          <a
+            key={tab.view}
+            href={tab.href}
+            aria-current={view === tab.view ? "page" : undefined}
+            className={`flex min-h-9 items-center justify-center rounded-full ${
+              view === tab.view ? "bg-ink text-paper" : "hover:bg-ink/10"
+            }`}
+          >
+            {tab.label}
+          </a>
+        ))}
+      </nav>
+
       <LocationDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
@@ -95,13 +133,15 @@ export default function App() {
         home={place === SKI ? undefined : SKI}
       />
 
-      {!verdict && (
+      {view === "long" && <LongTerm coords={place} />}
+
+      {view === "now" && !verdict && (
         <p className="font-display my-auto py-24 text-center text-3xl uppercase">
           {pending ? "Spør meteorologene…" : "Ingen vil si noe om været. Typisk."}
         </p>
       )}
 
-      {verdict && (
+      {view === "now" && verdict && (
         <>
           <div className="mt-2 flex items-start gap-2">
             <p className="font-display min-w-0 text-[clamp(6rem,40vw,11.5rem)] leading-[0.9] tracking-[-0.06em] tabular-nums">
@@ -135,6 +175,8 @@ export default function App() {
             </div>
           </dl>
 
+          <RestOfDay hours={restOfDay} utcOffset={verdict.utcOffset} />
+
           {readings.length > 1 && (
             <section className="mt-5 -rotate-[1.2deg] bg-ink p-4 text-paper">
               <div className="flex items-baseline justify-between gap-2">
@@ -150,31 +192,35 @@ export default function App() {
         </>
       )}
 
-      <ul className="mt-5">
-        {SOURCES.map((source) => {
-          const r = results[source.id] ?? { status: "loading" };
-          if (r.status !== "ok") return <SourceCard key={source.id} source={source} {...r} />;
-          const badge = !argues
-            ? undefined
-            : r.reading === verdict?.coldest
-              ? "pessimisten"
-              : r.reading === verdict?.warmest
-                ? "optimisten"
-                : undefined;
-          return (
-            <SourceCard
-              key={source.id}
-              source={source}
-              status="ok"
-              reading={r.reading}
-              badge={badge}
-            />
-          );
-        })}
-      </ul>
+      {view === "now" && (
+        <ul className="mt-5">
+          {SOURCES.map((source) => {
+            const r = results[source.id] ?? { status: "loading" };
+            if (r.status !== "ok") return <SourceCard key={source.id} source={source} {...r} />;
+            const badge = !argues
+              ? undefined
+              : r.reading === verdict?.coldest
+                ? "pessimisten"
+                : r.reading === verdict?.warmest
+                  ? "optimisten"
+                  : undefined;
+            return (
+              <SourceCard
+                key={source.id}
+                source={source}
+                status="ok"
+                reading={r.reading}
+                badge={badge}
+              />
+            );
+          })}
+        </ul>
+      )}
 
       <footer className="mt-auto pt-8 text-xs opacity-70">
-        Data fra MET Norway (Yr), OpenWeather og Open-Meteo
+        {view === "now"
+          ? "Data fra MET Norway (Yr), OpenWeather og Open-Meteo"
+          : "Data fra MET Norway (Yr) og ECMWF, GFS og ICON via Open-Meteo"}
       </footer>
     </main>
   );

@@ -7,6 +7,8 @@ interface Current {
   wind: { speed: number };
   weather: { id: number; description: string }[];
   sys: { sunrise: number; sunset: number };
+  /** Offset from UTC in seconds. */
+  timezone: number;
 }
 
 // https://openweathermap.org/weather-conditions
@@ -40,6 +42,7 @@ export const openweather: Source = {
       sunrise: new Date(data.sys.sunrise * 1000),
       sunset: new Date(data.sys.sunset * 1000),
       place: data.name || undefined,
+      utcOffset: data.timezone,
     };
   },
 };

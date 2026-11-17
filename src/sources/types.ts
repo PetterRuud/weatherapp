@@ -27,6 +27,44 @@ export interface Reading {
   sunrise?: Date;
   sunset?: Date;
   place?: string;
+  /** The place's offset from UTC in seconds, for knowing where "today" ends. */
+  utcOffset?: number;
+  /** Hour by hour from the current hour, about a day out. Not every source has this. */
+  hours?: Hour[];
+}
+
+/** One source's forecast for one hour. */
+export interface Hour {
+  /** Start of the hour. */
+  time: Date;
+  temp: number;
+  condition: Condition;
+  description: string;
+  /** Millimetres during the hour. */
+  precipitation: number;
+}
+
+/** Who can say something about a whole day: Yr, or one of the models Open-Meteo serves. */
+export type ForecasterId = "yr" | "ecmwf" | "gfs" | "icon";
+
+export interface Forecaster {
+  id: ForecasterId;
+  name: string;
+  url: string;
+}
+
+/** One forecaster's take on one day, normalised to a common shape. */
+export interface DayForecast {
+  forecaster: ForecasterId;
+  /** Calendar date in the place's own time zone, "2026-11-18". */
+  date: string;
+  condition: Condition;
+  description: string;
+  tempMax: number;
+  tempMin: number;
+  /** Millimetres over the whole day. */
+  precipitation: number;
+  windMax: number;
 }
 
 export type SourceId = "yr" | "openweather" | "openmeteo";

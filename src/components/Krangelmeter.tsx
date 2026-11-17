@@ -5,6 +5,9 @@ const DOT: Record<string, string> = {
   yr: "bg-sky-500",
   openweather: "bg-orange-500",
   openmeteo: "bg-emerald-500",
+  ecmwf: "bg-violet-500",
+  gfs: "bg-rose-500",
+  icon: "bg-lime-400",
 };
 
 /** A thermometer where each source gets a dot. The further apart, the louder the argument. */
