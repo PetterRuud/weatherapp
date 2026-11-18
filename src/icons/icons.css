@@ -513,3 +513,21 @@
     opacity: 1;
   }
 }
+
+/* Still icons: every part at rest where the SVG draws it. Raindrops, snowflakes and the bolt
+   start hidden and only appear through their animation, so force them visible. */
+.wx-icon.wx-still svg *,
+.wx-icon.wx-still svg {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wx-icon svg *,
+  .wx-icon svg {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

@@ -38,7 +38,7 @@ export function RestOfDay({ hours, utcOffset }: { hours: HourVerdict[]; utcOffse
               <span className="text-xs font-extrabold tabular-nums">
                 {now ? "Nå" : clock(h.time)}
               </span>
-              <WeatherIcon condition={h.condition} className="size-8" />
+              <WeatherIcon condition={h.condition} className="size-8" still />
               <span className="font-display text-lg tabular-nums">{Math.round(h.temp)}°</span>
               <span className="text-[0.7rem] tabular-nums opacity-75">
                 {h.precipitation >= 0.1 ? `${num(h.precipitation)} mm` : " "}

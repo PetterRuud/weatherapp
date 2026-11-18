@@ -21,15 +21,18 @@ const ICONS: Record<Condition, string> = {
 export function WeatherIcon({
   condition,
   className = "",
+  still = false,
 }: {
   condition: Condition;
   className?: string;
+  /** No animation, for when many icons sit side by side. */
+  still?: boolean;
 }) {
   return (
     <span
       role="img"
       aria-label={condition}
-      className={`wx-icon inline-block ${className}`}
+      className={`wx-icon inline-block ${still ? "wx-still" : ""} ${className}`}
       dangerouslySetInnerHTML={{ __html: ICONS[condition] }}
     />
   );
